@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>joytunecal</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bootstrap4/css/bootstrap.css">
+	<style type="text/css">
+		table{
+			text-decoration-line: none;
+			text-align: center;
+		}
+		button{
+			width: 100%;
+			height: 100%;
+		}
+		 #result{
+			width: 100%;
+			height: 60%;
+			font-size: 50px;
+		}
+		 #result2{
+			width: 100%;
+			height: 40%;
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body style="background-color:#002448;">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<table class="table table-hover, table-success" border="10" height="600px" align="center" style="margin-top:60px;">
+					<tr height="10px">
+						<td colspan="4"><input type="text" name="" height="20px" id="result2"><input type="" name="" id="result"></td>
+					</tr>
+					<tr class="table table-danger">
+						<td><button onclick="operator('/')" class="btn btn-warning">/</button></td>
+						<td><button onclick="operator('*')" class="btn btn-warning">*</button></td>
+						<td><button onclick="clears()" class="btn btn-danger">Del</button></td>
+						<td><button onclick="get('clear')"  class="btn btn-info">AC</button></td>
+					</tr>
+					<tr>
+						<td><button onclick="get('7')">7</button></td>
+						<td><button onclick="get('8')">8</button></td>
+						<td><button onclick="get('9')">9</button></td>
+						<td><button onclick="operator('-')" class="btn btn-warning">-</button></td>
+					</tr>
+					<tr>
+						<td><button onclick="get('4')">4</button></td>
+						<td><button onclick="get('5')">5</button></td>
+						<td><button onclick="get('6')">6</button></td>
+						<td><button onclick="operator('+')" class="btn btn-warning">+</button></td>
+					</tr>
+					<tr>
+						<td><button onclick="get('1')">1</button></td>
+						<td><button onclick="get('2')">2</button></td>
+						<td><button onclick="get('3')">3</button></td>
+						<td rowspan="2"><button onclick='equals()'  class="btn btn-warning">=</button></td>
+					</tr>
+					<tr>
+						<td colspan="2"><button onclick="get('0')">0</button></td>
+						<td><button onclick="get('.')">.</button></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var fValue;
+	var sValue; 
+	var oper;
+
+	function get (a)
+	{	
+		var c=result.value
+		if(a=="clear"){result.value="0";}
+			else{ if(c=="0"){result.value=a}
+				else{result.value+=a;}}
+			if(a=="clear"){result2.value="0";}
+			else{ if(c=="0"){result2.value=a}
+				else{result2.value+=a;}}
+	}
+	function clears()
+	{
+		var str = result.value;
+			var l = str.length;
+			l--;
+			result.value = str.substr(0,l);
+			var str = result2.value;
+			var l = str.length;
+			l--;
+			result2.value = str.substr(0,l);
+	}
+	function operator(e)
+	{
+		result2.value+=e;
+		fValue=result.value;
+		result.value='';
+		oper=e;
+	}
+	function equals()
+	{ 
+		sValue=result.value;
+		result.value='';
+		if(oper == '*')
+			{
+				result.value = parseInt(fValue) * parseInt(sValue);
+			}
+			else if(oper == '+')
+			{
+				result.value = parseInt(fValue) + parseInt(sValue);
+			}
+			else if(oper == '-')
+			{
+				result.value = parseInt(fValue) - parseInt(sValue);
+			}
+			else if(oper == '/')
+			{
+				result.value = parseInt(fValue) / parseInt(sValue);
+			}		
+	}
+</script>
