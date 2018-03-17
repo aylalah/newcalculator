@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js5calculator</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bootstrap4/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap4/font/fontawesome/web-fonts-with-css/css/fontawesome-all.css">
+</head>
+	<style type="text/css">
+		table{
+			text-decoration-line: none;
+			text-align: center;
+		}
+		button{
+			width: 100%;
+			height: 100%;
+		}
+		input{
+			width: 100%;
+			height: 100%;
+			font-size: 50px
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<table class="table table-hover, table-success" border="10" height="600px" align="center" style="margin-top:60px;">
+					<tr>
+						<td colspan="4"><input type="text" name="" height="50px" id="result"></td>
+					</tr>
+					<tr class="table table-danger">
+						<td><button onclick="operator('divide')" class="btn btn-warning">/</button></td>
+						<td><button onclick="operator('times')" class="btn btn-warning">*</button></td>
+						<td><button onclick="clears()" class="btn btn-danger">del</button></td>
+						<td><button onclick="get('clear')"  class="btn btn-info">AC</button></td>
+					</tr>
+					<tr>
+						<td><button onclick="get('7')">7</button></td>
+						<td><button onclick="get('8')">8</button></td>
+						<td><button onclick="get('9')">9</button></td>
+						<td><button onclick="operator('minus')" class="btn btn-warning">-</button></td>
+					</tr>
+					<tr>
+						<td><button onclick="get('4')">4</button></td>
+						<td><button onclick="get('5')">5</button></td>
+						<td><button onclick="get('6')">6</button></td>
+						<td><button onclick="operator('plus')" class="btn btn-warning">+</button></td>
+					</tr>
+					<tr>
+						<td><button onclick="get('1')">1</button></td>
+						<td><button onclick="get('2')">2</button></td>
+						<td><button onclick="get('3')">3</button></td>
+						<td rowspan="2"><button onclick='equals()'  class="btn btn-warning">=</button></td>
+					</tr>
+					<tr>
+						<td colspan="2"><button onclick="get('0')">0</button></td>
+						<td><button onclick="get('.')">.</button></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+		var fValue;
+		var sValue;
+		var oper;
+		function operator(u)
+		{
+			fValue = result.value;
+			result.value = '';
+			oper = u;
+		}
+		function equals()
+		{
+			sValue = result.value;
+			result.value = '';
+			if(oper == 'times')
+			{
+				result.value = parseInt(fValue) * parseInt(sValue);
+			}
+			else if(oper == 'plus')
+			{
+				result.value = parseInt(fValue) + parseInt(sValue);
+			}
+			else if(oper == 'minus')
+			{
+				result.value = parseInt(fValue) - parseInt(sValue);
+			}
+			else if(oper == 'divide')
+			{
+				result.value = parseInt(fValue) / parseInt(sValue);
+			}
+
+		}
+
+
+		function get(b)
+		{
+			var c=result.value;
+			if (b=="clear") {result.value="0";}
+				else{if (c==0) {result.value=b;}
+				else{result.value+=b;}	}			
+		}
+		function clears()
+		{
+			var str = result.value;
+			var l = str.length;
+			l--;
+			result.value = str.substr(0,l);
+			
+
+		}
+	</script>
+</html>
